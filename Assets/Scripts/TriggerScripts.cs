@@ -7,6 +7,13 @@ public class TriggerScripts : MonoBehaviour
 {
     public PlayableDirector ghostTimeline;
     public PlayableDirector fireTimeline;
+    public PlayableDirector roomTimeline;
+
+    public GameObject ghostTrigger;
+    public GameObject fireTrigger;
+    public GameObject roomTrigger;
+
+    public GameObject JunkPileObj;
 
     private void Start()
     {
@@ -19,14 +26,21 @@ public class TriggerScripts : MonoBehaviour
         {
             ghostTimeline.Play();
             Debug.Log("Timeline is playing!");
+            ghostTrigger.SetActive(false);
         }
 
         if (other.gameObject.CompareTag("Trigger2"))
         {
             fireTimeline.Play();
             Debug.Log("Timeline is playing!");
+            fireTrigger.SetActive(false);
         }
 
+        if(other.gameObject.CompareTag("Trigger3"))
+        {
+            JunkPileObj.SetActive(true);
 
+            roomTrigger.SetActive(false);
+        }
     }
 }
