@@ -7,6 +7,7 @@ TagManager:
   - Trigger
   - Trigger2
   - Trigger3
+  - NathanielTrigger
   layers:
   - Default
   - TransparentFX

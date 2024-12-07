@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 public class TriggerScripts : MonoBehaviour
 {
     public PlayableDirector ghostTimeline;
     public PlayableDirector fireTimeline;
-    public PlayableDirector roomTimeline;
+    public PlayableDirector nathanielTimeline;
 
     public GameObject ghostTrigger;
     public GameObject fireTrigger;
-    public GameObject roomTrigger;
+    public GameObject nathanielTrigger;
 
     public GameObject JunkPileObj;
 
@@ -19,6 +20,7 @@ public class TriggerScripts : MonoBehaviour
     {
         fireTimeline.Stop();
         ghostTimeline.Stop();
+        nathanielTimeline.Stop();
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -40,7 +42,14 @@ public class TriggerScripts : MonoBehaviour
         {
             JunkPileObj.SetActive(true);
 
-            roomTrigger.SetActive(false);
+            nathanielTimeline.Play();
+
+            nathanielTrigger.SetActive(false);
+        }
+
+        if (other.gameObject.CompareTag("NathanielTrigger"))
+        {
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }
